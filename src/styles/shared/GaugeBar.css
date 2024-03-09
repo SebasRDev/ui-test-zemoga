@@ -1,0 +1,44 @@
+.gauge-bar{
+  display: flex;
+  height: 36px;
+  width: 100%;
+
+  .gauge-bar__data{
+    position: relative;
+
+    p{
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 1.2;
+      color: var(--color-white);
+      margin: 0;
+    }
+
+    .gauge-bar__data__content{
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 7px;
+      gap: 6px;
+      z-index: 1;
+    }
+
+    &.gauge-bar__data--likes{
+      background-color: rgba(var(--color-green-positive), 0.6);
+
+      .gauge-bar__data__content{
+        left: 12px;
+      }
+
+    }
+
+    &.gauge-bar__data--dislikes{
+      justify-content: flex-end;
+      background-color: rgba(var(--color-yellow-negative), 0.6);
+
+      .gauge-bar__data__content{
+        right: 12px;
+      }
+    }
+  }
+}
