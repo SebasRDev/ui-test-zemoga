@@ -1,0 +1,25 @@
+.thumb{
+  width: 30px;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumb--up{
+  background-color: rgba(var(--color-green-positive), 0.8);
+  cursor: pointer;
+}
+
+.thumb--up:hover{
+  background-color: rgba(var(--color-green-positive), 1);
+}
+
+.thumb--down{
+  background-color: rgba(var(--color-yellow-negative), 0.8);
+  cursor: pointer;
+}
+
+.thumb--down:hover{
+  background-color: rgba(var(--color-yellow-negative), 1);
+}
