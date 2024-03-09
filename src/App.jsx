@@ -1,4 +1,5 @@
 import './App.css'
+import { VotingList } from './components/votingList/VotingList'
 
 function App() {
 
@@ -92,7 +93,7 @@ function App() {
             </button>
         </aside>
         <main role="main">
-            👉 Your code goes here 👈
+            <VotingList />
         </main>
         <aside className="banner banner-bottom" role="doc-tip" aria-label="Submit a name">
             <img
