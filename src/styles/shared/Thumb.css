@@ -4,11 +4,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.thumb--active{
+  border-color: var(--color-white);
 }
 
 .thumb--up{
   background-color: rgba(var(--color-green-positive), 0.8);
-  cursor: pointer;
 }
 
 .thumb--up:hover{
@@ -17,7 +22,6 @@
 
 .thumb--down{
   background-color: rgba(var(--color-yellow-negative), 0.8);
-  cursor: pointer;
 }
 
 .thumb--down:hover{
