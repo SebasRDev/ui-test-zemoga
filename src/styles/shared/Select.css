@@ -1,0 +1,45 @@
+.select{
+  width: 130px;
+  height: 36px;
+  position: relative;
+  z-index: 100;
+}
+
+.select__item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px 8px 8px;
+  border: 2px solid #333;
+  cursor: pointer;
+
+  p{
+    display: block;
+    width: 90px;
+    text-align: center;
+    margin: 0;
+    text-transform: capitalize;
+  }
+}
+
+.select__options{
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    display: none;
+}
+
+.select__options--open{
+    display: block;
+}
+
+.select__options > div {
+    border-top: none;
+    justify-content: center;
+
+    &:hover{
+      background-color: #f2f2f2;
+    }
+}
