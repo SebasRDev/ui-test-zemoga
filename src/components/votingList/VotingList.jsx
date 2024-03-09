@@ -1,4 +1,5 @@
 import { Card } from "../../shared/Card"
+import '../../styles/components/votingList/VotingList.css'
 
 const data = [
   {
@@ -72,7 +73,7 @@ const data = [
 export const VotingList = () => {
   return (
     <div className="voting-list">
-      <h3>Previous Rulings</h3>
+      <h3 className="voting-list__title">Previous Rulings</h3>
       <div className="voting-list__wrapper">
         {data.map((item) => {
           return (
