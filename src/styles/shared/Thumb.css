@@ -5,11 +5,10 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  border: 2px solid transparent;
 }
 
 .thumb--active{
-  border-color: var(--color-white);
+  outline: 2px solid var(--color-white);
 }
 
 .thumb--up{
@@ -26,4 +25,15 @@
 
 .thumb--down:hover{
   background-color: rgba(var(--color-yellow-negative), 1);
+}
+
+@media (width > 1100px){
+  .thumb{
+    width: 45px;
+
+    img{
+      width: 24px;
+      height: auto;
+    }
+  }
 }

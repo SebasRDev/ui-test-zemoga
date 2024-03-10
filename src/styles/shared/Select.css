@@ -24,7 +24,6 @@
 
 .select__options{
     position: absolute;
-    top: calc(100% + 1px);
     left: 0;
     width: 100%;
     background-color: #fff;
