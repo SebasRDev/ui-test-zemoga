@@ -2,9 +2,14 @@ import PropTypes from "prop-types";
 import "../styles/shared/Select.css";
 import { useState } from "react";
 
-export const Select = ({options, selected}) => {
+export const Select = ({options, selected, onChange}) => {
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleChange = (value) => {
+    onChange(value);
+    setIsOpen(false);
+  }
 
   return (
     <div className="select">
@@ -27,7 +32,7 @@ export const Select = ({options, selected}) => {
       <div className={`select__options ${isOpen &&'select__options--open'}`}>
         {options.map(({value, label}) => {
           return (
-            <div className="select__item" key={value}>
+            <div className="select__item" key={value} onClick={() => handleChange(value)}>
               {label}
             </div>
           );
@@ -40,4 +45,5 @@ export const Select = ({options, selected}) => {
 Select.propTypes = {
   selected: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
