@@ -17,6 +17,7 @@
 .voting-card__portrait {
   position: absolute;
   z-index: -1;
+  width: 100%;
 }
 
 .voting-card__content {
@@ -27,6 +28,7 @@
   justify-content: flex-end;
   height: 100%;
   gap: 12px;
+  border-image: fill 0 linear-gradient(rgb(0 0 0 / 0%) 0%, rgb(0 0 0 / 5%) 30%, rgb(0 0 0 / 60%) 100%);
 }
 
 .voting-card__data {
@@ -82,5 +84,17 @@
     font-size: 15px;
     line-height: 1.2;
     padding: 10px 20px;
+  }
+}
+
+@media (width > 768px){
+  .voting-card{
+    width: 100%;
+  }
+}
+
+@media (width > 1100px){
+  .voting-card{
+    width: 100%;
   }
 }
