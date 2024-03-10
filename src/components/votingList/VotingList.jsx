@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "../../shared/Card";
 import "../../styles/components/votingList/VotingList.css";
 import { Select } from "../../shared/Select";
@@ -79,24 +79,36 @@ const data = [
 ];
 
 export const VotingList = () => {
+  const [layout, setLayout] = useState('list');
+  useEffect(() => {
+    document.querySelector('.voting-list__wrapper').classList.add(`voting-list__wrapper--${layout}`);
+
+    return () => {
+      document.querySelector('.voting-list__wrapper').classList.remove(`voting-list__wrapper--${layout}`);
+    }
+
+  }, [layout])  
+  
   const layoutOptions = [
     { value: "list", label: "List" },
     { value: "grid", label: "Grid" },
   ];
 
-  const [layout, setLayout] = useState('list');
-
-  // const handleChangeLayout = (e) => {
-  //   setLayout(e.target.value)
-  // }
+  const handleChangeLayout = (value) => {
+    if (value !== layout) {
+      setLayout(value);
+    }
+  }
 
   return (
     <div className="voting-list">
       <div className="voting-list__header">
         <h3 className="voting-list__title">Previous Rulings</h3>
-        <Select selected={layout} options={layoutOptions} />
+        <div className="voting-list__select">
+          <Select selected={layout} options={layoutOptions} onChange={handleChangeLayout}/>
+        </div>
       </div>
-      <div className="voting-list__wrapper">
+      <div className={`voting-list__wrapper `}>
         {data.map((item) => {
           return <Card key={item.name} />;
         })}
