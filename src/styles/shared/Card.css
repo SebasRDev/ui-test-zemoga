@@ -79,6 +79,10 @@
     text-align: right;
     color: var(--color-white);
     margin: 0;
+
+    span{
+      text-transform: capitalize;
+    }
   }
 
   button {
