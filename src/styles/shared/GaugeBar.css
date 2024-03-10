@@ -5,6 +5,7 @@
 
   .gauge-bar__data{
     position: relative;
+    transition: all 0.3s ease-in-out;
 
     p{
       font-weight: normal;

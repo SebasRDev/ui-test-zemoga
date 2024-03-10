@@ -4,12 +4,13 @@ import "../styles/shared/Card.css";
 import { GaugeBar } from "./GaugeBar";
 import { Thumb } from "./Thumb";
 
-export const Card = ({ celebrity }) => {
+export const Card = ({ celebrity, handleUpdate }) => {
   const [thumbSelected, setThumbSelected] = useState({
     like: false,
     dislike: false,
   });
   const [voted, setVoted] = useState(false);
+
   const { name, description, category, picture, lastUpdated, votes } = celebrity;
 
   const calculateDiferenceDates = (dateString) => {
@@ -38,6 +39,16 @@ export const Card = ({ celebrity }) => {
   };
 
   const handleVote = () => {
+    if (!voted){
+      const updatedCelebrity = {
+        ...celebrity,
+        votes: {
+          positive: thumbSelected.like ? votes.positive + 1 : votes.positive,
+          negative: thumbSelected.dislike ? votes.negative + 1 : votes.negative,
+        },
+      };
+      handleUpdate(updatedCelebrity);
+    }
     setThumbSelected({ like: false, dislike: false });
     setVoted(!voted);
   }
@@ -91,4 +102,5 @@ export const Card = ({ celebrity }) => {
 
 Card.propTypes = {
   celebrity: PropTypes.object.isRequired,
+  handleUpdate: PropTypes.func,
 };

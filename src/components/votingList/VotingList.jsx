@@ -81,7 +81,7 @@ const data = [
 
 export const VotingList = () => {
   const [storeLayout, setStoreLayout] = useLocalStorage('layout', 'list');
-  const [storeData] = useLocalStorage('data', data);
+  const [storeData, setStoreData] = useLocalStorage('data', data);
 
   useEffect(() => {
     document.querySelector('.voting-list__wrapper').classList.add(`voting-list__wrapper--${storeLayout}`);
@@ -103,6 +103,17 @@ export const VotingList = () => {
     }
   }
 
+  const handleUpdateItem = (item) => {
+    const newData = storeData.map((celebrity) => {
+      if (celebrity.name === item.name) {
+        return item;
+      }
+      return celebrity;
+    });
+    setStoreData(newData);
+    console.log(item);
+  }
+
   return (
     <div className="voting-list">
       <div className="voting-list__header">
@@ -113,7 +124,7 @@ export const VotingList = () => {
       </div>
       <div className={`voting-list__wrapper `}>
         {storeData.map((item) => {
-          return <Card key={item.name} celebrity={item}/>;
+          return <Card key={item.name} celebrity={item} handleUpdate={handleUpdateItem}/>;
         })}
       </div>
     </div>
