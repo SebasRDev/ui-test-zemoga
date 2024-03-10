@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Card } from "../../shared/Card";
 import "../../styles/components/votingList/VotingList.css";
 import { Select } from "../../shared/Select";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 const data = [
   {
@@ -79,15 +80,17 @@ const data = [
 ];
 
 export const VotingList = () => {
-  const [layout, setLayout] = useState('list');
+  const [storeLayout, setStoreLayout] = useLocalStorage('layout', 'list');
+  const [storeData] = useLocalStorage('data', data);
+
   useEffect(() => {
-    document.querySelector('.voting-list__wrapper').classList.add(`voting-list__wrapper--${layout}`);
+    document.querySelector('.voting-list__wrapper').classList.add(`voting-list__wrapper--${storeLayout}`);
 
     return () => {
-      document.querySelector('.voting-list__wrapper').classList.remove(`voting-list__wrapper--${layout}`);
+      document.querySelector('.voting-list__wrapper').classList.remove(`voting-list__wrapper--${storeLayout}`);
     }
 
-  }, [layout])  
+  }, [storeLayout])  
   
   const layoutOptions = [
     { value: "list", label: "List" },
@@ -95,8 +98,8 @@ export const VotingList = () => {
   ];
 
   const handleChangeLayout = (value) => {
-    if (value !== layout) {
-      setLayout(value);
+    if (value !== storeLayout) {
+      setStoreLayout(value);
     }
   }
 
@@ -105,11 +108,11 @@ export const VotingList = () => {
       <div className="voting-list__header">
         <h3 className="voting-list__title">Previous Rulings</h3>
         <div className="voting-list__select">
-          <Select selected={layout} options={layoutOptions} onChange={handleChangeLayout}/>
+          <Select selected={storeLayout} options={layoutOptions} onChange={handleChangeLayout}/>
         </div>
       </div>
       <div className={`voting-list__wrapper `}>
-        {data.map((item) => {
+        {storeData.map((item) => {
           return <Card key={item.name} celebrity={item}/>;
         })}
       </div>

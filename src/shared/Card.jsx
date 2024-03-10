@@ -10,8 +10,7 @@ export const Card = ({ celebrity }) => {
     dislike: false,
   });
   const [voted, setVoted] = useState(false);
-  const { name, description, category, picture, lastUpdated, votes } =
-    celebrity;
+  const { name, description, category, picture, lastUpdated, votes } = celebrity;
 
   const calculateDiferenceDates = (dateString) => {
     const currentDate = new Date();
@@ -37,6 +36,11 @@ export const Card = ({ celebrity }) => {
       setThumbSelected({ like: false, dislike: true });
     }
   };
+
+  const handleVote = () => {
+    setThumbSelected({ like: false, dislike: false });
+    setVoted(!voted);
+  }
 
   return (
     <div className="voting-card">
@@ -75,7 +79,7 @@ export const Card = ({ celebrity }) => {
               />
             </>
           )}
-          <button onClick={() => setVoted(!voted)}>
+          <button onClick={handleVote}>
             {voted ? "Vote Again" : "Vote Now"}
           </button>
         </div>
