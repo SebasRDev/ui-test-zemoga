@@ -2,8 +2,15 @@ import PropTypes from "prop-types";
 import '../styles/shared/Thumb.css';
 
 export const Thumb = ({type, isSelected, handleSelect}) => {
+  const handleClick = () => {
+    if (!handleSelect) {
+      return;
+    }
+    handleSelect(type);
+  };
+
   return (
-    <div onClick={() => handleSelect(type)} className={`thumb thumb--${type} ${isSelected ? 'thumb--active' : ''}`} aria-label="thumbs-up">
+    <div onClick={handleClick} className={`thumb thumb--${type} ${isSelected ? 'thumb--active' : ''}`} aria-label="thumbs-up">
       <img src={`/assets/img/thumbs-${type}.svg`} alt={type} />
     </div>
   )
