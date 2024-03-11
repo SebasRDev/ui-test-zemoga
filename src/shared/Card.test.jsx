@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 import {
   render,
   screen,
@@ -22,8 +22,10 @@ const mockData = {
 };
 
 describe("Card component", () => {
+  let handleUpdateMock;
   beforeEach(() => {
-    render(<Card celebrity={mockData} />);
+    handleUpdateMock = vi.fn();
+    render(<Card celebrity={mockData} handleUpdate={handleUpdateMock}/>);
   });
   it("should match the snapshot", () => {
     const { container } = render(<Card celebrity={mockData} />);
@@ -86,8 +88,33 @@ describe("Card component", () => {
     fireEvent.click(voteAgainButton);
     await waitFor(() => {
       expect(screen.getByText("Vote Now")).toBeInTheDocument();
-      expect(screen.getByTestId("thumb-up-action")).not.toHaveClass("thumb--active");
-      expect(screen.getByTestId("thumb-down-action")).not.toHaveClass("thumb--active");
+      expect(screen.getByTestId("thumb-up-action")).not.toHaveClass(
+        "thumb--active"
+      );
+      expect(screen.getByTestId("thumb-down-action")).not.toHaveClass(
+        "thumb--active"
+      );
+    });
+  });
+  it("should updtate positive votes when vote now is clicked", async () => {
+    const thumbUp = screen.getByTestId("thumb-up-action");
+    const voteButton = screen.getByText("Vote Now");
+    const initialPositiveVotes = mockData.votes.positive;
+    act(() => {
+      fireEvent.click(thumbUp);
+    });
+    fireEvent.click(voteButton);
+    await waitFor(() => {
+      const updatedPositiveVotes = initialPositiveVotes + 1;
+      const updatedCelebrity = {
+        ...mockData,
+        votes: { 
+          ...mockData.votes,
+          positive: updatedPositiveVotes 
+        },
+      };
+      console.log(handleUpdateMock)
+      expect(handleUpdateMock).toHaveBeenCalledWith(updatedCelebrity);
     });
   });
 });
