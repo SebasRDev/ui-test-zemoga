@@ -32,7 +32,7 @@ Run the development server:
 pnpm run dev
 ```
 
-Open your browser and navigate to <http://localhost:3000> to view the app.
+Open your browser and navigate to localhost to view the app.
 
 ## Notes
 
