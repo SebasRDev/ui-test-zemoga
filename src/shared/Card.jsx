@@ -39,7 +39,7 @@ export const Card = ({ celebrity, handleUpdate }) => {
   };
 
   const handleVote = () => {
-    if (!voted){
+    if (!voted && (thumbSelected.like || thumbSelected.dislike)){
       const updatedCelebrity = {
         ...celebrity,
         votes: {
@@ -48,9 +48,12 @@ export const Card = ({ celebrity, handleUpdate }) => {
         },
       };
       handleUpdate(updatedCelebrity);
+      setVoted(true);
     }
-    setThumbSelected({ like: false, dislike: false });
-    setVoted(!voted);
+    if (voted) {
+      setVoted(false);
+      setThumbSelected({ like: false, dislike: false });
+    }
   }
 
   return (
@@ -90,7 +93,7 @@ export const Card = ({ celebrity, handleUpdate }) => {
               />
             </>
           )}
-          <button onClick={handleVote}>
+          <button disabled={!thumbSelected.like && !thumbSelected.dislike} onClick={handleVote}>
             {voted ? "Vote Again" : "Vote Now"}
           </button>
         </div>
