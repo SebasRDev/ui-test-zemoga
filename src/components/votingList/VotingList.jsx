@@ -111,7 +111,6 @@ export const VotingList = () => {
       return celebrity;
     });
     setStoreData(newData);
-    console.log(item);
   }
 
   return (
