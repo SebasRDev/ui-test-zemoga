@@ -24,6 +24,7 @@ export const Card = ({ celebrity, handleUpdate }) => {
 
   const handleVote = () => {
     if (!voted && (thumbSelected.like || thumbSelected.dislike)){
+      setVoted(true);
       const updatedCelebrity = {
         ...celebrity,
         votes: {
@@ -32,7 +33,6 @@ export const Card = ({ celebrity, handleUpdate }) => {
         },
       };
       handleUpdate(updatedCelebrity);
-      setVoted(true);
     }
     if (voted) {
       setVoted(false);
@@ -69,15 +69,17 @@ export const Card = ({ celebrity, handleUpdate }) => {
                 type="up"
                 isSelected={thumbSelected.like}
                 handleSelect={handleSelectVote}
+                testId={"thumb-up-action"}
               />
               <Thumb
                 type="down"
                 isSelected={thumbSelected.dislike}
                 handleSelect={handleSelectVote}
+                testId={"thumb-down-action"}
               />
             </>
           )}
-          <button disabled={!thumbSelected.like && !thumbSelected.dislike} onClick={handleVote} aria-label={`Vote for ${name}`}>
+          <button role="button" disabled={!thumbSelected.like && !thumbSelected.dislike} onClick={handleVote} aria-label={`Vote for ${name}`}>
             {voted ? "Vote Again" : "Vote Now"}
           </button>
         </div>

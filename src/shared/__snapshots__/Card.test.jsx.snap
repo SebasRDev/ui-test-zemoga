@@ -1,0 +1,137 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Card component > should match the snapshot 1`] = `
+<div>
+  <div
+    aria-label="Voting card Kanye West"
+    class="voting-card"
+    role="listitem"
+  >
+    <img
+      alt="Kanye West"
+      class="voting-card__portrait"
+      src="./assets/img/kanye.webp"
+    />
+    <div
+      class="voting-card__content"
+    >
+      <div
+        class="voting-card__data"
+      >
+        <div
+          aria-label="Average votes"
+          class="voting-card__thumb-average"
+        >
+          <div
+            aria-label="thumbs-down"
+            class="thumb thumb--down "
+            data-testid=""
+            role="button"
+          >
+            <img
+              alt="down"
+              src="/assets/img/thumbs-down.svg"
+            />
+          </div>
+        </div>
+        <h4
+          aria-label="name"
+        >
+          Kanye West
+        </h4>
+        <p
+          aria-label="description"
+        >
+          Born in Atlanta and raised in Chicago, West was first known as a producer for Roc-A-Fella Records in the early 2000s, producing singles for several mainstream artists.
+        </p>
+      </div>
+      <div
+        class="votin-card__votes"
+      >
+        <p
+          aria-label="How many time ago label"
+        >
+          19 days ago
+           in 
+          <span>
+            entertainment
+          </span>
+        </p>
+        <div
+          aria-label="thumbs-up"
+          class="thumb thumb--up "
+          data-testid="thumb-up-action"
+          role="button"
+        >
+          <img
+            alt="up"
+            src="/assets/img/thumbs-up.svg"
+          />
+        </div>
+        <div
+          aria-label="thumbs-down"
+          class="thumb thumb--down "
+          data-testid="thumb-down-action"
+          role="button"
+        >
+          <img
+            alt="down"
+            src="/assets/img/thumbs-down.svg"
+          />
+        </div>
+        <button
+          aria-label="Vote for Kanye West"
+          disabled=""
+          role="button"
+        >
+          Vote Now
+        </button>
+      </div>
+      <div
+        aria-label="Voting gauge"
+        class="gauge-bar"
+        role="progressbar"
+      >
+        <div
+          class="gauge-bar__data gauge-bar__data--likes"
+          style="flex: 1 0 39.0%;"
+        >
+          <div
+            class="gauge-bar__data__content"
+          >
+            <img
+              alt="thumbs-up"
+              aria-hidden="true"
+              src="./assets/img/thumbs-up.svg"
+            />
+            <p
+              aria-label="Positive percentage"
+            >
+              39.0%
+            </p>
+          </div>
+        </div>
+        <div
+          class="gauge-bar__data gauge-bar__data--dislikes"
+          style="flex: 1 0 61.0%;"
+        >
+          <div
+            class="gauge-bar__data__content"
+          >
+            <p
+              aria-label="Negative percentage"
+            >
+              61.0%
+            </p>
+            <img
+              alt="thumbs-down"
+              aria-hidden="true"
+              src="./assets/img/thumbs-down.svg"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
