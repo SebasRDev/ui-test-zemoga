@@ -41,25 +41,25 @@ export const Card = ({ celebrity, handleUpdate }) => {
   }
 
   return (
-    <div className="voting-card">
+    <div className="voting-card" role="listitem" aria-label={`Voting card ${name}`}>
       <img
         className="voting-card__portrait"
         src={`./assets/img/${picture}`}
-        alt="Kanye West"
+        alt={name}
       />
       <div className="voting-card__content">
         <div className="voting-card__data">
-          <div className="voting-card__thumb-average">
+          <div className="voting-card__thumb-average" aria-label="Average votes">
             <Thumb type={votes.positive > votes.negative ? "up" : "down"} />
           </div>
-          <h4>{name}</h4>
-          <p>{description}</p>
+          <h4 aria-label="name">{name}</h4>
+          <p aria-label="description">{description}</p>
         </div>
         <div className="votin-card__votes">
           {voted ? (
-            <p>Thank you for voting!</p>
+            <p aria-label="Thanks for voting label">Thank you for voting!</p>
           ) : (
-            <p>
+            <p aria-label="How many time ago label">
               {calculateDiferenceDates(lastUpdated)} in <span>{category}</span>
             </p>
           )}
@@ -77,7 +77,7 @@ export const Card = ({ celebrity, handleUpdate }) => {
               />
             </>
           )}
-          <button disabled={!thumbSelected.like && !thumbSelected.dislike} onClick={handleVote}>
+          <button disabled={!thumbSelected.like && !thumbSelected.dislike} onClick={handleVote} aria-label={`Vote for ${name}`}>
             {voted ? "Vote Again" : "Vote Now"}
           </button>
         </div>

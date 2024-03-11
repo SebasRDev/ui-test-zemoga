@@ -116,12 +116,12 @@ export const VotingList = () => {
   return (
     <div className="voting-list">
       <div className="voting-list__header">
-        <h3 className="voting-list__title">Previous Rulings</h3>
-        <div className="voting-list__select">
+        <h3 className="voting-list__title" aria-label="Previous Rulings">Previous Rulings</h3>
+        <div className="voting-list__select" aria-label="Select to change the layout">
           <Select selected={storeLayout} options={layoutOptions} onChange={handleChangeLayout}/>
         </div>
       </div>
-      <div className={`voting-list__wrapper `}>
+      <div className={`voting-list__wrapper `} aria-label="List of celebrities" role="list">
         {storeData.map((item) => {
           return <Card key={item.name} celebrity={item} handleUpdate={handleUpdateItem}/>;
         })}
