@@ -1,27 +1,21 @@
 import PropTypes from "prop-types";
 import '../styles/shared/GaugeBar.css';
+import { calculatePercentage } from "../helpers/utils";
 
 export const GaugeBar = ({votes}) => {
-  const { positive, negative } = votes;
-  const calculatePercentage = () => {
-    const total = positive + negative;
-    return {
-      positive: `${(positive / total * 100).toFixed(1)}%`,
-      negative: `${(negative / total * 100).toFixed(1)}%`,
-    }
-  }
+  const { positive, negative } = calculatePercentage(votes.positive, votes.negative);
 
   return (
     <div className="gauge-bar">
-       <div style={{flex: `1 0 ${calculatePercentage().positive}`}} className='gauge-bar__data gauge-bar__data--likes'>
+       <div style={{flex: `1 0 ${positive}`}} className='gauge-bar__data gauge-bar__data--likes'>
           <div className='gauge-bar__data__content'>
             <img src="./assets/img/thumbs-up.svg" alt="thumbs-up" />
-            <p>{calculatePercentage().positive}</p>
+            <p>{positive}</p>
           </div>
        </div>
-       <div style={{flex: `1 0 ${calculatePercentage().negative}`}} className='gauge-bar__data gauge-bar__data--dislikes'>
+       <div style={{flex: `1 0 ${negative}`}} className='gauge-bar__data gauge-bar__data--dislikes'>
           <div className='gauge-bar__data__content'>
-            <p>{calculatePercentage().negative}</p>
+            <p>{negative}</p>
             <img src="./assets/img/thumbs-down.svg" alt="thumbs-down" />
           </div>
        </div>
