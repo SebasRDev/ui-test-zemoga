@@ -1,0 +1,48 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Select > should render a select component 1`] = `
+<div>
+  <div
+    class="select"
+  >
+    <div
+      class="select__item"
+      data-testid="test-select"
+    >
+      <p>
+        list
+      </p>
+      <svg
+        fill="none"
+        height="7"
+        viewBox="0 0 11 7"
+        width="11"
+      >
+        <path
+          clip-rule="evenodd"
+          d="M5.25 7L6.11959e-07 -9.17939e-07L10.5 0L5.25 7Z"
+          fill="#333333"
+          fill-rule="evenodd"
+        />
+      </svg>
+    </div>
+    <div
+      class="select__options false"
+      data-testid="test-select-options"
+    >
+      <div
+        class="select__item"
+        role="select-options"
+      >
+        List
+      </div>
+      <div
+        class="select__item"
+        role="select-options"
+      >
+        Grid
+      </div>
+    </div>
+  </div>
+</div>
+`;

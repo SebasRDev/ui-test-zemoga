@@ -13,7 +13,7 @@ export const Select = ({options, selected, onChange}) => {
 
   return (
     <div className="select">
-      <div className="select__item" onClick={() => setIsOpen(!isOpen)}>
+      <div data-testid="test-select" className="select__item" onClick={() => setIsOpen(!isOpen)}>
         <p>{selected}</p>
         <svg
           width="11"
@@ -29,10 +29,10 @@ export const Select = ({options, selected, onChange}) => {
           />
         </svg>
       </div>
-      <div className={`select__options ${isOpen &&'select__options--open'}`}>
+      <div data-testid="test-select-options"  className={`select__options ${isOpen &&'select__options--open'}`}>
         {options.map(({value, label}) => {
           return (
-            <div className="select__item" key={value} onClick={() => handleChange(value)}>
+            <div role="select-options" className="select__item" key={value} onClick={() => handleChange(value)}>
               {label}
             </div>
           );
