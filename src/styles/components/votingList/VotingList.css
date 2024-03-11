@@ -8,6 +8,10 @@
   align-items: center;
 }
 
+.voting-list__select{
+  display: none;
+}
+
 .voting-list__title{
   font-weight: 300;
   font-size: 24px;
@@ -21,6 +25,10 @@
 }
 
 @media (width > 767px){
+  .voting-list__select{
+    display: block;
+  }
+
   .voting-list__wrapper--list{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -45,7 +53,7 @@
   }
 
   .voting-list__wrapper--grid .thumb{
-    width: 30%;
+    width: 30px;
 
     img{
       width: auto;
